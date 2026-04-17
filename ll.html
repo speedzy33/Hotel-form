@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Booking UI</title>
+
+
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    padding: 20px;
+}
+
+
+/* GLASS CONTAINER */
+.container {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    color: white;
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    font-size: 26px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+/* FLOATING FIELD */
+.field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* INPUT STYLE */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 14px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+/* LABEL (FLOATING) */
+.field label {
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    color: rgba(255,255,255,0.7);
+    pointer-events: none;
+    transition: 0.25s ease;
+    background: transparent;
+}
+
+/* FLOAT EFFECT */
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field select:focus + label,
+.field select:not([value=""]) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: white;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+/* IMAGE PREVIEW */
+#preview {
+    margin-top: 10px;
+    width: 120px;
+    border-radius: 10px;
+    display: none;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+    
+<head>
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Menu button (3 lines) */
+.menu-btn {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+/* Side menu */
+.side-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+}
+
+/* Menu links */
+.side-menu a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+/* Hover effect */
+.side-menu a:hover {
+  background-color: #575757;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 3-line icon -->
+<span class="menu-btn" onclick="openMenu()">☰</span>
+
+<!-- Side menu -->
+<div id="menu" class="side-menu">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</div>
+
+<script>
+function openMenu() {
+  document.getElementById("menu").style.width = "250px";
+}
+</script>
+
+</body>
+
+<div class="container">
+    <h1>Hotel Swagat Inn</h1>
+    <h2>Luxury Booking Form</h2>
+
+    <form>
+
+        <div class="field">
+            <input type="text" placeholder=" " required>
+            <label>Name</label>
+        </div>
+
+        <div class="field">
+            <input type="date" required>
+            <label>Date of Birth</label>
+        </div>
+
+        <div class="field">
+            <select required>
+                <option value=""></option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            <label>Gender</label>
+        </div>
+
+        <div class="field">
+            <input type="file" accept="image/*" onchange="previewImage(event)">
+            <label>Upload Photo</label>
+            <img id="preview">
+        </div>
+
+        <div class="field">
+            <input type="email" placeholder=" " required>
+            <label>Email</label>
+        </div>
+
+        <div class="field">
+            <input type="tel" placeholder=" " required>
+            <label>Phone</label>
+        </div>
+
+        <div class="field">
+            <select required>
+                <option value=""></option>
+                <option>Single Room (AC)</option>
+                <option>Double Room (AC)</option>
+                <option>Suite Room (AC)</option>
+                <option>Double Room (Non-AC)</option>
+            </select>
+            <label>Room Type</label>
+        </div>
+
+        <div class="field">
+            <textarea placeholder=" "></textarea>
+            <label>Additional Info</label>
+        </div>
+
+        <button type="submit">Book Now</button>
+    </form>
+</div>
+
+<script>
+function previewImage(event) {
+    const img = document.getElementById("preview");
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = "block";
+}
+</script>
+
+</body>
+</html>
